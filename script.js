@@ -1,4 +1,4 @@
-﻿// script.js
+// script.js
 // Ordering page logic: add items, update quantities, remove items, and save current order.
 
 const MENU = [
@@ -93,9 +93,14 @@ function initializePage() {
     }
 
     window.addEventListener('storage', (e) => {
-        if (e.key === STORAGE_HISTORY || e.key === 'orderHistory_updated' || e.key === 'recent_order') {
+        if (e.key === STORAGE_HISTORY || e.key === 'orderHistory_updated' || e.key === 'recent_order' || e.key === STORAGE_CURRENT_ORDER || e.key === 'current_order_cleared') {
             loadOrderHistory();
             updateSalesReport();
+            // If the current order was changed or cleared in another tab, reload it and update the summary
+            try {
+                loadCurrentOrder();
+                renderOrderSummary();
+            } catch (err) {}
         }
     });
 
