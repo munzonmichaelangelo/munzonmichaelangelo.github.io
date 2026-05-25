@@ -1,4 +1,4 @@
-﻿// checkout.js
+// checkout.js
 // Checkout page logic: load order data, calculate change, print receipt, and save completed orders.
 
 const STORAGE_CURRENT_ORDER = 'currentFoodOrder';
@@ -172,6 +172,13 @@ function confirmPayment() {
 
     saveCurrentOrder();
     saveOrderHistory(currentOrder);
+    // Clear the persisted current order so the main order summary resets
+    try {
+        localStorage.removeItem(STORAGE_CURRENT_ORDER);
+        // notify other tabs/pages that the current order was cleared
+        localStorage.setItem('current_order_cleared', new Date().toISOString());
+    } catch (e) {}
+
     renderReceipt();
     checkoutMessage.textContent = 'Payment confirmed. You can now print the receipt.';
 }
