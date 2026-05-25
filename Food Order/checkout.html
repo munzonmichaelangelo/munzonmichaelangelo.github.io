@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Food Order</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main class="app-shell">
+        <div class="brand-bar">
+            <img src="assets/pba-logo.png" alt="PBA logo" class="brand-logo" onerror="this.style.display='none'" />
+            <div class="brand-info">
+                <h2 class="brand-title">Printing Business Academy</h2>
+                <p class="brand-sub">Checkout</p>
+            </div>
+        </div>
+        <section class="hero">
+            <p class="eyebrow">Checkout</p>
+            <h1>Review and Pay</h1>
+            <p class="lead">Your receipt is ready. Enter payment and print the receipt.</p>
+        </section>
+
+        <section class="panel checkout-panel">
+            <div class="receipt-card">
+                <div class="receipt-header">
+                    <h2>Receipt Preview</h2>
+                    <span id="receipt-status" class="badge">UNPAID</span>
+                </div>
+
+                <div class="receipt-details">
+                    <p><strong>Customer:</strong> <span id="receipt-customer">-</span></p>
+                    <p><strong>Order #:</strong> <span id="receipt-number">-</span></p>
+                    <p><strong>Date:</strong> <span id="receipt-date">-</span></p>
+                </div>
+
+                <div class="receipt-items" id="receipt-items"></div>
+
+                <div class="receipt-totals">
+                    <div><span>Total orders</span><strong id="receipt-total-orders">0</strong></div>
+                    <div><span>Total amount</span><strong id="receipt-total-amount">₱0.00</strong></div>
+                    <div><span>Cash payment</span><strong id="receipt-cash">₱0.00</strong></div>
+                    <div><span>Change</span><strong id="receipt-change">-</strong></div>
+                    <div><span>Change status</span><strong id="receipt-change-status">-</strong></div>
+                    <div><span>Payment status</span><strong id="receipt-payment-status">UNPAID</strong></div>
+                </div>
+            </div>
+
+            <div class="panel-body checkout-body">
+                <div class="payment-panel">
+                    <label for="cash-input">Cash payment (₱)</label>
+                    <input id="cash-input" type="number" min="0" step="1" value="0" />
+                    <div class="payment-buttons">
+                        <button id="calculate-button" type="button" class="button secondary">Calculate</button>
+                        <button id="confirm-button" type="button" class="button primary">Confirm Payment</button>
+                        <button id="mark-change-button" type="button" class="button tertiary">Mark Change as Given</button>
+                    </div>
+                    <p id="checkout-message" class="message"></p>
+                </div>
+                <div class="action-panel">
+                    <button id="print-button" type="button" class="button primary">Print Receipt</button>
+                    <button id="back-button" type="button" class="button secondary">Back to Order</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
